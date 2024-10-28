@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .input-base {
+    @apply relative w-full bg-white border border-lime-200 text-lime-900 rounded-lg focus:ring-lime-500 focus:border-lime-500 block p-2  dark:bg-lime-700 dark:border-lime-600 dark:placeholder-lime-400 dark:text-white dark:focus:ring-lime-500 dark:focus:border-lime-500 h-10
+  }
+  .button-base {
+    @apply justify-center rounded-lg border border-transparent bg-lime-700 px-4 py-2 text-white shadow-sm hover:bg-lime-600
+  }
+  .text-button {
+    @apply inline-flex items-center rounded-lg bg-lime-700 hover:bg-lime-500 disabled:bg-lime-400 px-3 py-2 text-base font-medium text-white hover:text-opacity-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75
+  }
+  .text-button-icon {
+    @apply h-5 w-5 text-lime-100 transition duration-150 ease-in-out group-hover:text-opacity-80
+  }
+  }
+
+body {
+  margin: 0;
+  font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+serif {
+  font-family: 'DM Serif Text', serif;
+}
+
+
+
+.dot {
+  height: 14px;
+  width: 14px;
+  border-radius: 100%;
+  display: inline-block;
+  background-color: lime;
+  animation: 1.2s typing-dot ease-in-out infinite;
+}
+
+.dot:nth-of-type(2) {
+  animation-delay: 0.15s;
+}
+
+.dot:nth-of-type(3) {
+  animation-delay: 0.25s;
+}
+
+@keyframes typing-dot {
+  15% {
+    transform: translateY(-35%);
+    opacity: 0.5;
+  }
+  30% {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}
