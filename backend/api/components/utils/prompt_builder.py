@@ -18,7 +18,7 @@ class PromptBuilder:
         system_prompt = prompt_paths["new_chat"].system
         return self.file_handler.read_file(system_prompt)
 
-    def build_condense_chat_history_prompt(self) -> str:
+    def build_condense_chat_messages_prompt(self) -> str:
         prompt_path = prompt_paths["condense_chat_history"].user
         prompt_content = self.file_handler.read_file(prompt_path)
         custom_prompt = PromptTemplate(prompt_content)
