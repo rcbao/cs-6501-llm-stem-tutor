@@ -121,7 +121,7 @@ const Chat = () => {
                     <p className="text-lg font-bold text-lime-900 dark:text-white">
                         STEM Tutor
                     </p>
-                    <div className="relative bg-lime-200 p-4 rounded-3xl w-4/5 min-h-12 mr-auto dark:bg-lime-600 text-lg">
+                    <div className="relative bg-lime-200 p-4 pr-6 rounded-3xl w-4/5 min-h-12 mr-auto dark:bg-lime-600 text-lg">
                         <Markdown
                             remarkPlugins={[remarkGfm]}
                             rehypePlugins={[rehypeRaw]}

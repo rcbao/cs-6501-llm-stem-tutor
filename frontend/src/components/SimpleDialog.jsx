@@ -24,7 +24,7 @@ const SimpleDialog = ({ contexts }) => {
         <>
             <button className="absolute bottom-3 right-3" id="chat-context">
                 <BookOpenIcon
-                    className="w-6 h-6 hover:text-gray-500 cursor-pointer dark:text-gray-50"
+                    className="w-6 h-6 hover:text-lime-500 cursor-pointer dark:text-lime-50"
                     alt="icon"
                     type="button"
                     onClick={openDialog}
