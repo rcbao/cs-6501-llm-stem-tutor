@@ -118,10 +118,10 @@ const Chat = () => {
                     key={index}
                     className="flex flex-col space-y-1 mb-6 mx-1"
                 >
-                    <p className="text-base font-bold text-lime-900 dark:text-white">
+                    <p className="text-lg font-bold text-lime-900 dark:text-white">
                         STEM Tutor
                     </p>
-                    <div className="relative bg-lime-200 p-4 rounded-3xl w-4/5 min-h-12 pr-2 mr-auto dark:bg-lime-600">
+                    <div className="relative bg-lime-200 p-4 rounded-3xl w-4/5 min-h-12 mr-auto dark:bg-lime-600 text-lg">
                         <Markdown
                             remarkPlugins={[remarkGfm]}
                             rehypePlugins={[rehypeRaw]}
@@ -139,7 +139,7 @@ const Chat = () => {
                     key={index}
                     className="flex flex-col space-y-1 mb-6 mx-1"
                 >
-                    <div className="bg-lime-700 p-4 rounded-3xl max-w-4/5 min-h-12 pr-2 ml-auto">
+                    <div className="bg-lime-700 p-4 rounded-3xl max-w-4/5 min-h-12 ml-auto text-lg">
                         <Markdown
                             remarkPlugins={[remarkGfm]}
                             rehypePlugins={[rehypeRaw]}
@@ -160,7 +160,7 @@ const Chat = () => {
                         displayChatHistoryRecord(el, i)
                     )}
                     <div className="flex flex-1 flex-col mb-2">
-                        <p className="text-base font-bold text-lime-900 dark:text-white">
+                        <p className="text-lg font-bold text-lime-900 dark:text-white">
                             STEM Tutor
                         </p>
                         <TypingAnimation />
@@ -191,7 +191,7 @@ const Chat = () => {
         if (!conversationStarted) {
             return (
                 <div className="flex flex-1 items-center justify-center dark:bg-lime-800">
-                    <h1 className="text-2xl tracking-tight font-bold text-lime-900 dark:text-white">
+                    <h1 className="text-3xl tracking-tight font-bold text-lime-900 dark:text-white">
                         How can I help you today?
                     </h1>
                 </div>
@@ -212,7 +212,7 @@ const Chat = () => {
 
     const displayChatContext = () => {
         return (
-            <div className="sticky top-15 bg-lime-50 z-10 py-2 dark:bg-lime-800">
+            <div className="sticky top-15 bg-lime-50 z-10 py-4 dark:bg-lime-800">
                 <div className="flex flex-col space-y-2 py-2">
                     {displayNewChatQuestions(true)}
                 </div>
@@ -232,7 +232,7 @@ const Chat = () => {
                 className="flex flex-col space-y-2"
             >
                 <label className="flex flex-row items-center w-full max-h-48 flex-grow">
-                    <div className="w-56 font-bold dark:text-white">
+                    <div className="w-56 font-bold dark:text-white text-lg">
                         Question
                     </div>
                     <textarea

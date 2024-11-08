@@ -9,7 +9,7 @@ export default function Header() {
                     <div className="flex justify-start px-16">
                         <span className="sr-only">STEM Tutor</span>
                         <Link to={`/`} style={{ textDecoration: "none" }}>
-                            <h2 className="font-bold tracking-tight text-lime-100 text-xl dark:hover:text-lime-200">
+                            <h2 className="font-bold tracking-tight text-lime-100 text-2xl dark:hover:text-lime-200">
                                 STEM Tutor
                             </h2>
                         </Link>

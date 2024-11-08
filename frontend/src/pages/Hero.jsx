@@ -29,10 +29,10 @@ export default function Hero() {
                     <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-32">
                         <div className="text-center">
                             <p></p>
-                            <h1 className="text-6xl font-extrabold tracking-tight text-lime-950 dark:text-white">
-                                STEM Tutor
+                            <h1 className="text-7xl font-extrabold tracking-tight text-lime-900 dark:text-white">
+                                LLM STEM Tutor
                             </h1>
-                            <p className="mt-6 text-xl leading-8 text-lime-950 dark:text-white">
+                            <p className="mt-6 text-2xl leading-8 text-lime-900 dark:text-white">
                                 Your personal AI tutor for Science/Math
                                 subjects!
                             </p>
