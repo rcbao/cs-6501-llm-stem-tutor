@@ -118,6 +118,3 @@ wrapt==1.16.0
 yarl==1.17.1
 zipp==3.20.2
 textstat==0.7.4
-torch==2.5.1
-transformers==4.46.2
-accelerate=1.1.1

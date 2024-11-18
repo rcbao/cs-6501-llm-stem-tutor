@@ -3,15 +3,36 @@ from llama_index.core.chat_engine import (
     CondensePlusContextChatEngine,
 )
 from llama_index.core.chat_engine.types import AgentChatResponse
-from .rag import load_rag_index
-from .data_structures import LlmResponse
-from .constants import OPENAI_MODEL, OPENAI_MAX_TOKENS
-from .utils.chat_history_formatter import ChatHistoryFormatter
-from .utils.prompt_builder import PromptBuilder
-from .utils.file_handler import FileHandler
+from api.components.rag import load_rag_index
+from api.components.data_structures import LlmResponse
+from api.components.constants import OPENAI_MODEL, OPENAI_MAX_TOKENS
+from api.components.utils.chat_history_formatter import ChatHistoryFormatter
+from api.components.utils.prompt_builder import PromptBuilder
+from api.components.utils.file_handler import FileHandler
+import textstat
 
-from .evaluation.grade_level import evaluate_readability
-from .evaluation.simplifier import iteratively_simplify_text
+
+def evaluate_text(text: str, fk_threshold: float, fre_threshold: float) -> bool:
+
+    fk_grade = textstat.flesch_kincaid_grade(text)
+    fre_score = textstat.flesch_reading_ease(text)
+
+    print(f"FKGL: {fk_grade}, FRE: {fre_score}")
+
+    return fk_grade <= fk_threshold and fre_score >= fre_threshold
+
+
+def evaluate_readability(text: str) -> dict:
+
+    grade_level = textstat.flesch_kincaid_grade(text)
+    reading_ease = textstat.flesch_reading_ease(text)
+
+    response = {
+        "flesch_kincaid_grade": grade_level,
+        "flesch_reading_ease": reading_ease,
+    }
+    print(response)
+    return response
 
 
 SHOWING_ONLY_ONE_CONTEXT = True
@@ -34,7 +55,6 @@ class LlmConnector:
             temperature=0,
         )
         gpt_response = response.choices[0].message.content
-        gpt_response = gpt_response + "\nNormal REsponse"
         return gpt_response
 
     def clean_rag_context_text(self, context_text: str) -> str:
@@ -119,11 +139,10 @@ class LlmConnector:
         readability_scores = evaluate_readability(response)
         flesch_kincaid_grade = readability_scores["flesch_kincaid_grade"]
         flesch_reading_ease = readability_scores["flesch_reading_ease"]
-
+        print("----------")
 
         if flesch_kincaid_grade > 6 or flesch_reading_ease < 70:
             response = iteratively_simplify_text(response, 6, 70)
-
 
         response = LlmResponse("assistant", response, contexts)
 
@@ -146,3 +165,53 @@ class LlmConnector:
             return res
         except Exception as e:
             raise ValueError(f"Error requesting GPT response in follow-up: {str(e)}")
+
+    def simplify_text_with_llm_connector(self, text: str) -> str:
+        """
+        Simplify text using the LlmConnector class to interact with LLMs.
+        """
+        try:
+            system_prompt = (
+                "You are a helpful assistant who simplifies text for an 8-year-old."
+            )
+            user_prompt = f"Please simplify the following text:\n\n{text.strip()}"
+
+            # Construct the initial messages for LlmConnector
+            messages = [
+                {"role": "system", "content": system_prompt},
+                {"role": "user", "content": user_prompt},
+            ]
+
+            # Use LlmConnector to get the response
+            response = self.get_gpt_response(messages)
+            return response.strip()
+        except Exception as e:
+            raise ValueError(f"Error simplifying text with LlmConnector: {str(e)}")
+
+    def iteratively_simplify_text(
+        self,
+        text: str,
+        fk_threshold: float,
+        fre_threshold: float,
+        max_iterations: int = 10,
+    ) -> str:
+        for iteration in range(max_iterations):
+            print(f"Starting Iteration {iteration + 1}: Current Text: {text}")
+
+            if evaluate_text(text, fk_threshold, fre_threshold):
+                print(f"Text meets thresholds after {iteration} iterations.")
+                return text
+
+            print(f"Iteration {iteration + 1}: Simplifying text...")
+            try:
+                simplified_text = self.simplify_text_with_llm_connector(text)
+                print(f"Simplified Text (Iteration {iteration + 1}): {simplified_text}")
+                text = simplified_text
+            except Exception as e:
+                print(
+                    f"Error during simplification in Iteration {iteration + 1}: {str(e)}"
+                )
+                raise
+
+        print("Max iterations reached. Returning the most simplified version.")
+        return text
