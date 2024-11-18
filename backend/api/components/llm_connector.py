@@ -10,6 +10,10 @@ from .utils.chat_history_formatter import ChatHistoryFormatter
 from .utils.prompt_builder import PromptBuilder
 from .utils.file_handler import FileHandler
 
+from .evaluation.grade_level import evaluate_readability
+from .evaluation.simplifier import iteratively_simplify_text
+
+
 SHOWING_ONLY_ONE_CONTEXT = True
 RAG_DISABLED = False
 
@@ -30,6 +34,7 @@ class LlmConnector:
             temperature=0,
         )
         gpt_response = response.choices[0].message.content
+        gpt_response = gpt_response + "\nNormal REsponse"
         return gpt_response
 
     def clean_rag_context_text(self, context_text: str) -> str:
@@ -109,6 +114,16 @@ class LlmConnector:
             index = load_rag_index()
             gpt_response = self.get_gpt_response_with_rag(index, question, messages)
             response, contexts = gpt_response["response"], gpt_response["contexts"]
+
+        # gets the readability scores and if its above and below certain thresholds its made to be simpler
+        readability_scores = evaluate_readability(response)
+        flesch_kincaid_grade = readability_scores["flesch_kincaid_grade"]
+        flesch_reading_ease = readability_scores["flesch_reading_ease"]
+
+
+        if flesch_kincaid_grade > 6 or flesch_reading_ease < 70:
+            response = iteratively_simplify_text(response, 6, 70)
+
 
         response = LlmResponse("assistant", response, contexts)
 
