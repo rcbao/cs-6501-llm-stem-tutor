@@ -142,7 +142,7 @@ class LlmConnector:
         print("----------")
 
         if flesch_kincaid_grade > 6 or flesch_reading_ease < 70:
-            response = iteratively_simplify_text(response, 6, 70)
+            response = self.iteratively_simplify_text(response, 6, 70)
 
         response = LlmResponse("assistant", response, contexts)
 
