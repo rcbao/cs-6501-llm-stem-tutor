@@ -82,6 +82,13 @@ To enable the OpenAI-powered tutoring features, add your API key to the environm
 OPENAI_API_KEY=your_openai_api_key
 ```
 
+### 7. Create RAG Vector Store
+
+```bash
+cd backend/
+python api/components/rag.py
+```
+
 ---
 
 ## Running the Project

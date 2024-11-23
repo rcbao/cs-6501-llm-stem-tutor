@@ -7,6 +7,9 @@ from llama_index.core import (
 )
 import sys
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Get the directory of the current script
 script_directory = os.path.abspath(os.path.dirname(__file__))
@@ -32,7 +35,12 @@ def load_rag_index():
         index.storage_context.persist(persist_dir=PERSIST_DIR)
     else:
         # load the existing index
+        print("Loading index from storage")
         storage_context = StorageContext.from_defaults(persist_dir=PERSIST_DIR)
         index = load_index_from_storage(storage_context)
 
     return index
+
+
+if __name__ == "__main__":
+    load_rag_index()
