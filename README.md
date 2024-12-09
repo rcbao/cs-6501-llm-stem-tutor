@@ -1,4 +1,4 @@
-# CS-6501 LLM STEM Tutor
+# CS-6501 LLM STEM Tutor (5th Grade Science)
 
 This project is a web-based tutoring platform designed to enhance STEM education for elementary school students. Leveraging advanced large language models (LLMs) and Retrieval-Augmented Generation (RAG), this application provides an interactive and supportive learning environment tailored to young learners.
 
