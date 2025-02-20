@@ -13,7 +13,7 @@ The chatbot uses LLM and Retrieval-Augmented Generation (RAG) to answer student 
 
 ---
 
-Optionally, the chatbot can ground its responses on a pre-set collection of grade-school level science articles. Below are screenshots of the bot answering an environmental science question using facts from an article in its RAG vector store.
+**Optionally, the chatbot can ground its responses on a pre-set collection of grade-school level science articles.** Below are screenshots of the bot answering an environmental science question using facts from an article in the vector store.
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/647f657f-1d4a-4ad3-885a-30175b8eeb58" width="48%" />
@@ -22,11 +22,9 @@ Optionally, the chatbot can ground its responses on a pre-set collection of grad
 
 ## Main Components
 
-The chatbot consists of the following components:
-
-- **Frontend**: Built with React and styled using Tailwind CSS
-- **Backend**: Developed with Django and integrated with the OpenAI API for generating responses
-- **LLM Integration**: Utilizes LlamaIndex to implement RAG, enabling more accurate and contextually relevant answers to student questions
+- **Frontend**: Built with React and styled using [Tailwind CSS](https://tailwindcss.com/)
+- **Backend**: Developed with Django REST API; integrated with the OpenAI API for generating LLM responses
+- **LLM Integration**: Used LlamaIndex to implement RAG, which helps to LLM to generate more accurate and relevant answers to student questions
 
 ## Requirements
 
@@ -104,23 +102,10 @@ cd backend/
 python api/components/rag.py
 ```
 
----
-
-## Running the Project
-
 With both frontend and backend servers running, you can access the application by navigating to `http://localhost:3000` in your web browser.
 
 ---
 
-## Features
+## License
 
-- **Interactive STEM Tutoring**: Uses LLMs to provide answers, explanations, and guidance on STEM topics suited for elementary students.
-- **Tailored Styling with Tailwind CSS**: Provides a user-friendly, responsive interface optimized for young learners.
-- **Retrieval-Augmented Generation (RAG)**: LlamaIndex enables context-aware tutoring, using RAG techniques to retrieve relevant information and improve response accuracy.
-
----
-
-## Troubleshooting
-
-- **Frontend Issues**: Ensure Node.js and npm are installed correctly. Clear the npm cache if there are dependency issues.
-- **Backend Issues**: Verify that all dependencies from `requirements.txt` are installed. Ensure `venv` is activated when running backend commands.
+MIT License
