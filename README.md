@@ -1,17 +1,32 @@
-# CS-6501 LLM STEM Tutor (5th Grade Science)
+# GenAI STEM Tutor
 
-This project is a web-based tutoring platform designed to enhance STEM education for elementary school students. Leveraging advanced large language models (LLMs) and Retrieval-Augmented Generation (RAG), this application provides an interactive and supportive learning environment tailored to young learners.
+A simple STEM tutor chatbot designed for elementary school students (e.g., 5th graders). 
+
+The chatbot uses LLM and Retrieval-Augmented Generation (RAG) to answer student questions. Under the hood, it uses OpenAI GPT-4o for the LLM component and LlamaIndex for building and retriving the RAG vector store.
+
+## Screenshots
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/5868d93b-716c-4733-9478-2b8931f23e44" width="48%" />
+  <img src="https://github.com/user-attachments/assets/bf3f5200-2e67-445d-8770-ff9499ff8ff6" width="48%" />
+</p>
 
 ---
 
-## Project Overview
+Optionally, the chatbot can ground its responses on a pre-set collection of grade-school level science articles. Below are screenshots of the bot answering an environmental science question using facts from an article in its RAG vector store.
 
-- **Target Audience**: Elementary school students
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/647f657f-1d4a-4ad3-885a-30175b8eeb58" width="48%" />
+  <img src="https://github.com/user-attachments/assets/ad416fab-c7bd-4417-bf89-5cde296670cf" width="48%" />
+</p>
+
+## Main Components
+
+The chatbot consists of the following components:
+
 - **Frontend**: Built with React and styled using Tailwind CSS
 - **Backend**: Developed with Django and integrated with the OpenAI API for generating responses
 - **LLM Integration**: Utilizes LlamaIndex to implement RAG, enabling more accurate and contextually relevant answers to student questions
-
----
 
 ## Requirements
 
