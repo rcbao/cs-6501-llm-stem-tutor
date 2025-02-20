@@ -1,28 +1,29 @@
 # GenAI STEM Tutor
 
-A simple STEM tutor chatbot designed for elementary school students (e.g., 5th graders). 
-
-## Screenshots
-
 <p align="center">
   <img src="https://github.com/user-attachments/assets/5868d93b-716c-4733-9478-2b8931f23e44" width="48%" />
   <img src="https://github.com/user-attachments/assets/bf3f5200-2e67-445d-8770-ff9499ff8ff6" width="48%" />
 </p>
 
----
+A simple STEM tutor chatbot for grade-school students. 
 
-**Optionally, the chatbot can ground its responses on a collection of grade-school level science teaching materials.** Below are screenshots of the bot answering an environmental science question using facts from an article in its RAG (Retrieval-Augmented Generation) vector store.
+This is project for UVA's [CS 6501: Natural langauge Processing](https://yangfengji.net/uva-nlp-grad/). It is made by Maria Cardei, Michael Cardei, and Robert Bao.
+
+## Main Components
+- **Frontend**: Made with React and styled using Tailwind CSS
+- **Backend**: Built with Django REST API, and integrated with the OpenAI API for generating LLM responses
+- **LLM and RAG**: Used [LlamaIndex](https://llamaindex.ai/) to implement RAG, which helps the LLM (GPT-4o) generate accurate and relevant answers
+
+## RAG vector store
+
+Optionally, the chatbot grounds its responses on a collection of grade-school level science teaching materials. 
+
+Below are screenshots of the bot answering an environmental science question using facts from an article in the RAG store. The context window of the bot shows the original passage from the article used to generate its response.
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/647f657f-1d4a-4ad3-885a-30175b8eeb58" width="48%" />
   <img src="https://github.com/user-attachments/assets/ad416fab-c7bd-4417-bf89-5cde296670cf" width="48%" />
 </p>
-
-## Main Components
-a
-- **Frontend**: Built with React and styled using Tailwind CSS
-- **Backend**: Developed with Django REST API; integrated with the OpenAI API for generating LLM responses
-- **LLM Integration**: Used LlamaIndex to implement RAG, which helps to LLM to generate more accurate and relevant answers to student questions
 
 ## Requirements
 
